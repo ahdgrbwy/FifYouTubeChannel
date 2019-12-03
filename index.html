@@ -8,19 +8,22 @@
       <link rel="stylesheet" href="./css/bootstrap-grid.min.css">
       <link rel="stylesheet" href="./css/global.min.css">
       <link rel="stylesheet" href="./css/index.min.css">
-      <title>Document</title>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+      <link href="https://fonts.googleapis.com/css?family=Solway:400,700&display=swap" rel="stylesheet">
+      <title>FifYTChannel | BY AHMED ESSAM</title>
    </head>
    <body>
       <div class="app">
          <nav>
             <div class="container">
                <div class="logo">
-                  <h1>FifyChannel</h1>
+                  <h1>FifYTChannel</h1>
                   <p>Fetch information from youtube channel</p>
                </div>
+               <div class="mobile"><i class="fas fa-bars fa-2x"></i></div>
                <ul>
                   <li>Research</li>
-                  <li>Last search</li>
+                  <li><a href="/search">Last search</a></li>
                   <li>About</li>
                </ul>
             </div>
@@ -30,7 +33,7 @@
                An example of a valid <span>link</span> or <span>id</span>
             </p>
             <form autocomplete="off">
-               <input type="text" placeholder="Enter ID or URL for channel">
+               <input type="text" name="search" placeholder="Enter ID or URL for channel">
                <button type="submit">Search</button>
             </form>
             <div class="history">
@@ -41,15 +44,37 @@
                <div>UC-4KnPMmZzwAzW7SbVATUZQ</div>
             </div>
          </section>
-         
       </div>
-      <footer>
-            ©Development by 
-            <a href="https://ahmedessam.info/" target="_blank">
-               Ahmed Essam
-            </a>
-         </footer>
       <script src="./js/jQuery.js"></script>
+      <script>
+         $(function() {
+            $('nav ul li:first-of-type').click(function() {$('input[name="search"]').focus()})
+
+            $('nav ul li:last-of-type').click(function() {window.open('https://ahmedessam.info/')})
+
+            $(window).resize(function() {
+               if (window.innerWidth >= 767) {
+                  $('nav ul').css('display', 'block')
+               } else {
+                  $('nav ul').css('display', 'none')
+                  $('nav ul li').click(function() {
+                     window.innerWidth <= 767 && $('nav ul').fadeOut(250)
+                  })
+                  $(document).mouseup(function (e) {
+                     if (!$('nav ul').is(e.target) && $('nav ul').has(e.target).length === 0) {
+                        window.innerWidth <= 767 && $('nav ul').fadeOut(250);
+                     }
+                  });
+               }
+            })
+            
+            $('.mobile').click(function() {
+               if ($('nav ul').css('display') === 'none') {
+                  $('nav ul').fadeIn(250)
+               }
+            })
+         })
+      </script>
       <script src="./js/index.js"></script>
    </body>
 </html>

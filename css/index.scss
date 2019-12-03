@@ -12,20 +12,43 @@
          height: 100%;
       }
       .logo {
-         p {margin-top: 5px;}
+         h1 {
+            font-size: 32px;
+         }
+         p {margin-top: 5px; font-size: 14px;}
+      }
+      .mobile {
+         display: none;
       }
       ul {
          li {
             display: inline-block;
+            cursor: pointer;
+            font-size: 18px;
+            position: relative;
+
             &:not(:last-of-type) {
                margin-right: 30px;
+            }
+            &::before {
+               content: '';
+               position: absolute;
+               left: 0;
+               bottom: -10px;
+               width: 0;
+               height: 2px;
+               background-color: #fff;
+               transition: all .6s ease-in-out;
+            }
+            &:hover::before, &:first-of-type::before {
+               width: 50%;
             }
          }
       }
    }
    .search {
       width: 550px;
-      margin: 150px auto 0;
+      margin: 150px auto;
 
       p {
          margin-bottom: 15px;
@@ -61,6 +84,56 @@
          > div {
             &:not(:last-of-type) {
                margin-bottom: 10px;
+            }
+         }
+      }
+   }
+   @media (max-width: 767px) {
+      nav {
+         .container {
+            position: relative;
+         }
+         .mobile {
+            display: block;
+            cursor: pointer;
+         }
+         ul {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 15px;
+            background-color: rgba($color: #000000, $alpha: 0.8);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            border-radius: 5px;
+            padding: 30px;
+            width: 250px;
+
+            li {
+               display: block;
+
+               &:not(:last-of-type) {
+                  margin: 0 0 25px 0;
+               }
+               &::before {
+                  bottom: -5px;
+               }
+               &:hover::before, &:first-of-type::before {
+                  width: 15%;
+               }
+            }
+         }
+      }
+   }
+   @media (max-width: 440px) {
+      nav {
+         .logo {
+            word-wrap: break-word;
+
+            h1 {
+               font-size: 25px;
+            }
+            p {
+               display: none;
             }
          }
       }

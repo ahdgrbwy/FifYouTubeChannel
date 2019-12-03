@@ -1,3 +1,7 @@
+* {
+   font-family: 'Solway', serif;
+}
+
 body {
    background-color: #333;
    color: #fff;
@@ -12,12 +16,4 @@ body {
 p {margin: 0;}
 ul {padding: 0; list-style: none;}
 img {pointer-events: none;}
-a {color: #fff;}
-
-footer {
-   position: absolute;
-   left: 0;
-   bottom: 15px;
-   width: 100%;
-   text-align: center;
-}
+a {color: #fff; text-decoration: none;}

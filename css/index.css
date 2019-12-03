@@ -14,21 +14,48 @@
   height: 100%;
 }
 
+.app nav .logo h1 {
+  font-size: 32px;
+}
+
 .app nav .logo p {
   margin-top: 5px;
+  font-size: 14px;
+}
+
+.app nav .mobile {
+  display: none;
 }
 
 .app nav ul li {
   display: inline-block;
+  cursor: pointer;
+  font-size: 18px;
+  position: relative;
 }
 
 .app nav ul li:not(:last-of-type) {
   margin-right: 30px;
 }
 
+.app nav ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 2px;
+  background-color: #fff;
+  transition: all .6s ease-in-out;
+}
+
+.app nav ul li:hover::before, .app nav ul li:first-of-type::before {
+  width: 50%;
+}
+
 .app .search {
   width: 550px;
-  margin: 150px auto 0;
+  margin: 150px auto;
 }
 
 .app .search p {
@@ -68,4 +95,49 @@
 
 .app .search .history > div:not(:last-of-type) {
   margin-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+  .app nav .container {
+    position: relative;
+  }
+  .app nav .mobile {
+    display: block;
+    cursor: pointer;
+  }
+  .app nav ul {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 5px;
+    padding: 30px;
+    width: 250px;
+  }
+  .app nav ul li {
+    display: block;
+  }
+  .app nav ul li:not(:last-of-type) {
+    margin: 0 0 25px 0;
+  }
+  .app nav ul li::before {
+    bottom: -5px;
+  }
+  .app nav ul li:hover::before, .app nav ul li:first-of-type::before {
+    width: 15%;
+  }
+}
+
+@media (max-width: 440px) {
+  .app nav .logo {
+    word-wrap: break-word;
+  }
+  .app nav .logo h1 {
+    font-size: 25px;
+  }
+  .app nav .logo p {
+    display: none;
+  }
 }
