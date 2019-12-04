@@ -4,10 +4,10 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="stylesheet" href="./css/normalize.css">
-      <link rel="stylesheet" href="./css/bootstrap-grid.min.css">
-      <link rel="stylesheet" href="./css/global.min.css">
-      <link rel="stylesheet" href="./css/index.min.css">
+      <link rel="stylesheet" href="./dist/css/normalize.css">
+      <link rel="stylesheet" href="./dist/css/bootstrap-grid.min.css">
+      <link rel="stylesheet" href="./dist/css/global.min.css">
+      <link rel="stylesheet" href="./dist/css/index.min.css">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
       <link href="https://fonts.googleapis.com/css?family=Solway:400,700&display=swap" rel="stylesheet">
       <title>FifYTChannel | BY AHMED ESSAM</title>
@@ -17,37 +17,59 @@
          <nav>
             <div class="container">
                <div class="logo">
-                  <h1>FifYTChannel</h1>
+                  <h1>Fif<span>YTChannel</span></h1>
                   <p>Fetch information from youtube channel</p>
                </div>
                <div class="mobile"><i class="fas fa-bars fa-2x"></i></div>
                <ul>
                   <li>Research</li>
-                  <li><a href="/search">Last search</a></li>
+                  <li><a href="/search.html">Last search</a></li>
                   <li>About</li>
                </ul>
             </div>
          </nav>
+         <div class="c_boxFull">
+            <div class="boxFull">
+               <div class="close"><i class="fas fa-times fa-2x"></i></div>
+               <div class="valid">
+                  <div>
+                     <h3>Valid URL:</h3>
+                     <div>https://www.youtube.com/channel/UCf5eV04TeNt8k6hNKAsbgfw/</div>
+                  </div>
+                  <div>
+                     <h3>Valid ID:</h3>
+                     <div>UCf5eV04TeNt8k6hNKAsbgfw</div>
+                  </div>
+               </div>
+            </div>
+         </div>
          <section class="search">
             <p>
-               An example of a valid <span>link</span> or <span>id</span>
+               An example of a valid <span>ID or URL,</span>
+               <span id="random">Click to generate a random URL</span>
             </p>
             <form autocomplete="off">
                <input type="text" name="search" placeholder="Enter ID or URL for channel">
                <button type="submit">Search</button>
             </form>
+            <div class="errors">
+               Please enter a valid ID or URL
+            </div>
             <div class="history">
-               <div>Your recent searches:</div>
-               <div>UC3gVtE-5etYKM-cdzBY225A</div>
-               <div>UCEeFa7t5I0fqpcLGF-36TEw</div>
-               <div>UCF88Atx-tqGKJVHRLm7ZZ3g</div>
-               <div>UC-4KnPMmZzwAzW7SbVATUZQ</div>
+               <div class="title"><i class="fas fa-history"></i> Your recent searches:</div>
+               <div class="empty">Unfortunately the list is empty</div>
+               <div class="his">
+                  <div>UC3gVtE-5etYKM-cdzBY225A</div>
+                  <div>UCEeFa7t5I0fqpcLGF-36TEw</div>
+                  <div>UCF88Atx-tqGKJVHRLm7ZZ3g</div>
+                  <div>UC-4KnPMmZzwAzW7SbVATUZQ</div>
+               </div>
             </div>
          </section>
       </div>
-      <script src="./js/jQuery.js"></script>
+      <script src="./dist/js/jQuery.js"></script>
       <script>
-         $(function() {
+         $(function() { // navbar
             $('nav ul li:first-of-type').click(function() {$('input[name="search"]').focus()})
 
             $('nav ul li:last-of-type').click(function() {window.open('https://ahmedessam.info/')})
@@ -75,6 +97,7 @@
             })
          })
       </script>
-      <script src="./js/index.js"></script>
+      <script src="./dist/js/index.js"></script>
+      <script src="./dist/js/youtubeAPi.js"></script>
    </body>
 </html>
