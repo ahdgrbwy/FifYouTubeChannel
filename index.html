@@ -4,6 +4,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="icon" href="./dist/images/favicon.png">
       <link rel="stylesheet" href="./dist/css/normalize.css">
       <link rel="stylesheet" href="./dist/css/bootstrap-grid.min.css">
       <link rel="stylesheet" href="./dist/css/global.min.css">
@@ -28,7 +29,7 @@
                </ul>
             </div>
          </nav>
-         <div class="c_boxFull">
+         <div class="boxFullValid">
             <div class="boxFull">
                <div class="close"><i class="fas fa-times fa-2x"></i></div>
                <div class="valid">
@@ -53,8 +54,11 @@
                   <input type="text" name="search" placeholder="Enter ID or URL for channel">
                   <button type="submit">Search</button>
                </form>
-               <div class="errors">
-                  Please enter a valid ID or URL
+               <div class="error v_url_id">
+                  <div class="valid">Please enter a valid ID or URL</div>
+               </div>
+               <div class="error connact_err">
+                  <div class="connact">Unexpected connection error from API</div>
                </div>
                <div class="history">
                   <div class="title"><i class="fas fa-history"></i> Your recent searches:</div>
@@ -63,6 +67,14 @@
                </div>
             </div>
          </section>
+         <div class="boxFullRedirect">
+            <div class="boxFull">
+               <div>
+                  <div class="loader">Loading...</div>
+                  <p style="text-align: center;">You are being redirected to the information page...</p>
+               </div>
+            </div>
+         </div>
       </div>
       <script src="./dist/js/jQuery.js"></script>
       <script src="./dist/js/moment.js"></script>

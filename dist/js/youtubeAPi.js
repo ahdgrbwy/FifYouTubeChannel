@@ -1,6 +1,7 @@
 $(function () {
-   
-   var st = {
+   redirect = false // global variable == true ? redirect to search.html
+
+   var st = { // API Settings
       default_url: 'https://www.googleapis.com/youtube/v3',
       api_key: 'AIzaSyA4ChC9gzj1gOdHUTkCmxfbTD4SuNQr8iM',
       max_results: 50
@@ -8,12 +9,12 @@ $(function () {
    history = JSON.parse(localStorage.getItem('history')),
    goToHistory = Array.isArray(history) ? history : [];
 
-   function errorsToggle(e) {
+   function errorsToggle(e, className) {
       if (e === 'show') {
-         $('.errors').fadeIn(250)
+         $(className).fadeIn(250)
 
       } else {
-         $('.errors').fadeOut(250)
+         $(className).fadeOut(250)
       }
    }
 
@@ -22,7 +23,7 @@ $(function () {
 
       var value = $('input[name="search"]').val().trim();
 
-      if (value) {
+      if (value) { // if input is not empty
          valuefilter = '';
          
          if (value.lastIndexOf('/') + 1 === value.length) {
@@ -33,7 +34,7 @@ $(function () {
          }
 
          if (valuefilter.length > 1) {
-            errorsToggle('hide')
+            errorsToggle('hide', '.v_url_id')
 
             $.ajax({
                method: 'GET',
@@ -41,27 +42,44 @@ $(function () {
                   ${st.default_url}/search?part=snippet&channelId=${valuefilter}&maxResults=${st.max_results}&key=${st.api_key}
                `,
                success: function(data) {
-                  localStorage.setItem('info_channel', JSON.stringify(data))
+                  if (data.items.length) {
+                     localStorage.setItem('info_channel', JSON.stringify(data))
 
-                  goToHistory.push({
-                     id: data.items[0].snippet.channelId, 
-                     name: data.items[0].snippet.channelTitle,
-                     date: new Date()
-                  })
+                     errorsToggle('hide', '.connact_err')
 
-                  localStorage.setItem('history', JSON.stringify(goToHistory))
+                     goToHistory.push({
+                        id: data.items[0].snippet.channelId, 
+                        name: data.items[0].snippet.channelTitle,
+                        date: new Date()
+                     })
+
+                     localStorage.setItem('history', JSON.stringify(goToHistory))
+
+                     redirect = true
+
+                     $('.boxFullRedirect').fadeIn(0)
+
+                  } else {
+                     errorsToggle('show', '.connact_err')
+                  }
                },
-               complete: function(xhr, status) {
-                  console.log(xhr)
-                  console.log(status)
+               error: function() {
+                  errorsToggle('show', '.connact_err')
+               },
+               complete: function(xhr) {
+                  if (redirect && xhr.status === 200) {
+                     window.setInterval(function() {
+                        window.location.replace('/search.html')
+                     }, 2000)
+                  }
                }
             })
             
          } else {
-            errorsToggle('show')
+            errorsToggle('show', '.v_url_id')
          }
       } else {
-         errorsToggle('show')
+         errorsToggle('show', '.v_url_id')
       }
    })
 
