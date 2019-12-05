@@ -44,30 +44,28 @@
             </div>
          </div>
          <section class="search">
-            <p>
-               An example of a valid <span>ID or URL,</span>
-               <span id="random">Click to generate a random URL</span>
-            </p>
-            <form autocomplete="off">
-               <input type="text" name="search" placeholder="Enter ID or URL for channel">
-               <button type="submit">Search</button>
-            </form>
-            <div class="errors">
-               Please enter a valid ID or URL
-            </div>
-            <div class="history">
-               <div class="title"><i class="fas fa-history"></i> Your recent searches:</div>
-               <div class="empty">Unfortunately the list is empty</div>
-               <div class="his">
-                  <div>UC3gVtE-5etYKM-cdzBY225A</div>
-                  <div>UCEeFa7t5I0fqpcLGF-36TEw</div>
-                  <div>UCF88Atx-tqGKJVHRLm7ZZ3g</div>
-                  <div>UC-4KnPMmZzwAzW7SbVATUZQ</div>
+            <div class="container">
+               <p>
+                  An example of a valid <span>ID or URL,</span>
+                  <span id="random">Click to generate a random URL</span>
+               </p>
+               <form autocomplete="off">
+                  <input type="text" name="search" placeholder="Enter ID or URL for channel">
+                  <button type="submit">Search</button>
+               </form>
+               <div class="errors">
+                  Please enter a valid ID or URL
+               </div>
+               <div class="history">
+                  <div class="title"><i class="fas fa-history"></i> Your recent searches:</div>
+                  <div class="empty">Unfortunately the list is empty</div>
+                  <div id="history"></div>
                </div>
             </div>
          </section>
       </div>
       <script src="./dist/js/jQuery.js"></script>
+      <script src="./dist/js/moment.js"></script>
       <script>
          $(function() { // navbar
             $('nav ul li:first-of-type').click(function() {$('input[name="search"]').focus()})
@@ -75,7 +73,7 @@
             $('nav ul li:last-of-type').click(function() {window.open('https://ahmedessam.info/')})
 
             $(window).resize(function() {
-               if (window.innerWidth >= 767) {
+               if (window.innerWidth >= 768) {
                   $('nav ul').css('display', 'block')
                } else {
                   $('nav ul').css('display', 'none')
@@ -89,7 +87,7 @@
                   });
                }
             })
-            
+
             $('.mobile').click(function() {
                if ($('nav ul').css('display') === 'none') {
                   $('nav ul').fadeIn(250)
