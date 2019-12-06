@@ -1,13 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Document</title>
-</head>
-<body>
-   <h1>hello</h1>
-   <a href="/">home</a>
-</body>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="icon" href="./dist/images/favicon.png">
+      <link rel="stylesheet" href="./dist/css/normalize.css">
+      <link rel="stylesheet" href="./dist/css/bootstrap-grid.min.css">
+      <link rel="stylesheet" href="./dist/css/global.min.css">
+      <link rel="stylesheet" href="./dist/css/search.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+      <link href="https://fonts.googleapis.com/css?family=Solway:400,700&display=swap" rel="stylesheet">
+      <title>Search | BY AHMED ESSAM</title>
+   </head>
+   <body>
+      <div class="app">
+         <div class="container">
+            <div class="info">
+               <a href="/"><i class="fas fa-chevron-left"></i> Back to home</a>
+               <h1>Informations:</h1>
+               <div class="row"></div>
+            </div>
+         </div>
+      </div>
+
+      <script src="./dist/js/jQuery.js"></script>
+      <script>
+         var data = JSON.parse(window.localStorage.getItem('info_channel'));
+
+         if (data && Array.isArray(data.items)) {
+            var info = [
+               {id: 1, title: 'Channel ID', content: data.items[0].snippet.channelId},
+               {id: 2, title: 'Channel name', content: data.items[0].snippet.channelTitle},
+               {id: 3, title: 'videos uploaded', content: data.pageInfo.totalResults},
+               {id: 4, title: 'displayed here', content: data.pageInfo.resultsPerPage},
+            ]
+
+            //console.log(info)
+            //console.log(data)
+
+            info.forEach(function(item) {
+               $('.info .row').append(`
+                  <div class="col-md-6 col-lg-3">
+                     <div class="details">
+                        <h4>${item.title}</h4>
+                        <span>${item.content}</span>
+                     </div>
+                  </div>
+               `)
+            })
+
+         } else {
+            $('.app .container').append('<div class="error">Please search for a channel to display here</div>');
+            $('.error').fadeIn(250)
+         }
+      </script>
+   </body>
 </html>

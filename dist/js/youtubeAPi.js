@@ -2,7 +2,7 @@ $(function () {
    redirect = false // global variable == true ? redirect to search.html
 
    var st = { // API Settings
-      default_url: 'https://www.googleapis.com/youtube/v3',
+      default_url: 'https://www.googleapis.com/youtube/v3/search?part=id%2C+snippet',
       api_key: 'AIzaSyA4ChC9gzj1gOdHUTkCmxfbTD4SuNQr8iM',
       max_results: 50
    },
@@ -35,11 +35,10 @@ $(function () {
 
          if (valuefilter.length > 1) {
             errorsToggle('hide', '.v_url_id')
-
             $.ajax({
                method: 'GET',
                url: `
-                  ${st.default_url}/search?part=snippet&channelId=${valuefilter}&maxResults=${st.max_results}&key=${st.api_key}
+                  ${st.default_url}&channelId=${valuefilter}&maxResults=${st.max_results}&fields=items(id%2Csnippet(channelId%2CchannelTitle%2Cdescription%2CpublishedAt%2Cthumbnails%2Ctitle))%2Ckind%2CnextPageToken%2CpageInfo%2CprevPageToken%2CregionCode%2CtokenPagination&key=${st.api_key}
                `,
                success: function(data) {
                   if (data.items.length) {

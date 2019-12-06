@@ -23,7 +23,7 @@
                </div>
                <div class="mobile"><i class="fas fa-bars fa-2x"></i></div>
                <ul>
-                  <li>Research</li>
+                  <li>Home</li>
                   <li><a href="/search.html">Last search</a></li>
                   <li>About</li>
                </ul>
@@ -78,35 +78,6 @@
       </div>
       <script src="./dist/js/jQuery.js"></script>
       <script src="./dist/js/moment.js"></script>
-      <script>
-         $(function() { // navbar
-            $('nav ul li:first-of-type').click(function() {$('input[name="search"]').focus()})
-
-            $('nav ul li:last-of-type').click(function() {window.open('https://ahmedessam.info/')})
-
-            $(window).resize(function() {
-               if (window.innerWidth >= 768) {
-                  $('nav ul').css('display', 'block')
-               } else {
-                  $('nav ul').css('display', 'none')
-                  $('nav ul li').click(function() {
-                     window.innerWidth <= 767 && $('nav ul').fadeOut(250)
-                  })
-                  $(document).mouseup(function (e) {
-                     if (!$('nav ul').is(e.target) && $('nav ul').has(e.target).length === 0) {
-                        window.innerWidth <= 767 && $('nav ul').fadeOut(250);
-                     }
-                  });
-               }
-            })
-
-            $('.mobile').click(function() {
-               if ($('nav ul').css('display') === 'none') {
-                  $('nav ul').fadeIn(250)
-               }
-            })
-         })
-      </script>
       <script src="./dist/js/index.js"></script>
       <script src="./dist/js/youtubeAPi.js"></script>
    </body>

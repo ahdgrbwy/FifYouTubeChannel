@@ -1,4 +1,18 @@
 $(function() {
+   $('nav ul li:last-of-type').click(function() {window.open('https://ahmedessam.info/')})
+
+   $(window).resize(function() {
+      if (window.innerWidth >= 768) {
+         $('nav ul').css('display', 'block')
+      } else {
+         $('nav ul').css('display', 'none')
+      }
+   })
+
+   $('.mobile').click(function() {
+      $('nav ul').fadeToggle(250)
+   })
+
    $('input[name="search"]').focus(function() {
       $(this).removeAttr('placeholder')
 
