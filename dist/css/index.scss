@@ -161,12 +161,15 @@
             position: absolute;
             top: 0;
             right: 0;
-            cursor: pointer;
             border-radius: 0 3px 3px 0;
+            background-color: #DDDDDD;
             @extend %Form_Child_Style;
-
-            &:hover {color: #135e81;}
          }
+      }
+      .connact_err {
+         text-align: center;
+         line-height: 1.5;
+         span{display: block;}
       }
       .history {
          margin-top: 30px;

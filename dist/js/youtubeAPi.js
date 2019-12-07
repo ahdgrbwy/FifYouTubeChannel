@@ -79,6 +79,7 @@ $(function () {
          }
       } else {
          errorsToggle('show', '.v_url_id')
+         errorsToggle('hide', '.connact_err')
       }
    })
 

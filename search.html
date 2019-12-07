@@ -9,7 +9,7 @@
       <link rel="stylesheet" href="./dist/css/bootstrap-grid.min.css">
       <link rel="stylesheet" href="./dist/css/global.min.css">
       <link rel="stylesheet" href="./dist/css/search.min.css">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
       <link href="https://fonts.googleapis.com/css?family=Solway:400,700&display=swap" rel="stylesheet">
       <title>Search | BY AHMED ESSAM</title>
    </head>
@@ -18,42 +18,33 @@
          <div class="container">
             <div class="info">
                <a href="/"><i class="fas fa-chevron-left"></i> Back to home</a>
-               <h1>Informations:</h1>
+               <h2>Informations:</h2>
                <div class="row"></div>
+            </div>
+            <div class="videos">
+               <div class="title">
+                  <h2>videos: <span></span></h2>
+                  <i class="fas fa-toggle-on fa-2x"></i>
+               </div>
+               <div class="view">
+                  <div class="filter">
+                     <h3>Filter API</h3>
+                     <div class="deleted">
+                        <span id="deleted"></span>
+                        <div class="help">
+                           <i class="fas fa-question-circle"></i>
+                           <span>Because it is not videos</span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row"></div>
+               </div>
             </div>
          </div>
       </div>
 
       <script src="./dist/js/jQuery.js"></script>
-      <script>
-         var data = JSON.parse(window.localStorage.getItem('info_channel'));
-
-         if (data && Array.isArray(data.items)) {
-            var info = [
-               {id: 1, title: 'Channel ID', content: data.items[0].snippet.channelId},
-               {id: 2, title: 'Channel name', content: data.items[0].snippet.channelTitle},
-               {id: 3, title: 'videos uploaded', content: data.pageInfo.totalResults},
-               {id: 4, title: 'displayed here', content: data.pageInfo.resultsPerPage},
-            ]
-
-            //console.log(info)
-            //console.log(data)
-
-            info.forEach(function(item) {
-               $('.info .row').append(`
-                  <div class="col-md-6 col-lg-3">
-                     <div class="details">
-                        <h4>${item.title}</h4>
-                        <span>${item.content}</span>
-                     </div>
-                  </div>
-               `)
-            })
-
-         } else {
-            $('.app .container').append('<div class="error">Please search for a channel to display here</div>');
-            $('.error').fadeIn(250)
-         }
-      </script>
+      <script src="./dist/js/moment.js"></script>
+      <script src="./dist/js/search.js"></script>
    </body>
 </html>
